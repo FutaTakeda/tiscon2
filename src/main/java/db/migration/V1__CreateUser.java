@@ -7,6 +7,7 @@ import org.flywaydb.core.api.migration.jdbc.JdbcMigration;
 
 /**
  *
+ *
  * @author takahashi
  */
 public class V1__CreateUser implements JdbcMigration {

@@ -104,14 +104,16 @@ public class CampaignController {
 
         // TODO タイトル, 目標人数を登録する
         Campaign model = builder(new Campaign())
-            .set(Campaign::setStatement, processor.markdownToHtml(form.getStatement()))
-            .set(Campaign::setCreateUserId, principal.getUserId())
-            .build();
+                .set(Campaign::setStatement, form.getTitle())   //フォームのタイトルをセット
+                .set(Campaign::setStatement, processor.markdownToHtml(form.getStatement()))
+                .set(Campaign::setStatement, form.getGoal())    //フォームの目標人数をセット
+                .set(Campaign::setCreateUserId, principal.getUserId())
+                .build();
         // TODO Databaseに登録する
 
         // TODO 作成完了した旨のflashメッセージを画面に表示する
         return builder(redirect("/campaign/" + model.getCampaignId(), SEE_OTHER))
-            .build();
+                .build();
     }
 
     /**
