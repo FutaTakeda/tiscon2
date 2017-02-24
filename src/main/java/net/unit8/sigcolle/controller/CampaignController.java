@@ -110,9 +110,11 @@ public class CampaignController {
                 .set(Campaign::setCreateUserId, principal.getUserId())
                 .build();
         // TODO Databaseに登録する
-
+        CampaignDao campaignDao = domaProvider.getDao(CampaignDao.class);
+        campaignDao.insert(model);
         // TODO 作成完了した旨のflashメッセージを画面に表示する
         return builder(redirect("/campaign/" + model.getCampaignId(), SEE_OTHER))
+                .set(HttpResponse::setFlash, new Flash("新しいキャンペーンを作成しました！"))
                 .build();
     }
 
