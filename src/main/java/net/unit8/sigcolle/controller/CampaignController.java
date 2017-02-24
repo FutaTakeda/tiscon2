@@ -104,9 +104,9 @@ public class CampaignController {
 
         // TODO タイトル, 目標人数を登録する
         Campaign model = builder(new Campaign())
-                .set(Campaign::setStatement, form.getTitle())   //フォームのタイトルをセット
+                .set(Campaign::setTitle, form.getTitle())   //フォームのタイトルをセット(setTitleに変更)
                 .set(Campaign::setStatement, processor.markdownToHtml(form.getStatement()))
-                .set(Campaign::setStatement, form.getGoal())    //フォームの目標人数をセット
+                .set(Campaign::setGoal, Long.valueOf(form.getGoal()))    //フォームの目標人数をセット(setGoalに変更、Longに変換)
                 .set(Campaign::setCreateUserId, principal.getUserId())
                 .build();
         // TODO Databaseに登録する
