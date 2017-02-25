@@ -148,9 +148,14 @@ public class CampaignController {
 
         SignatureDao signatureDao = domaProvider.getDao(SignatureDao.class);
         int signatureCount = signatureDao.countByCampaignId(campaignId);
+        List<String> signatureName = signatureDao.selectAllName();
+        List<String> signatureDepa = signatureDao.selectAllDepa();
+
 
         return templateEngine.render("campaign/index",
                                      "campaign", campaign,
+                                    "signatureName",signatureName,
+                                     "signatureDepa",signatureDepa,
                                      "signatureCount", signatureCount,
                                      "signature", form,
                                      "message", message

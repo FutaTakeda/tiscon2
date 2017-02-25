@@ -25,6 +25,10 @@ xmlns:th="http://www.thymeleaf.org">
                 <div class="ui grid">
                     <div class="ten wide column">
                         <div class="statement" th:utext="${campaign.statement}" ></div>
+                        <h2>賛同者名</h2>
+                        <div class="statement" th:utext="${signatureName}" >ここに賛同名前</div>
+                        <h2>部署名</h2>
+                        <div class="statement" th:utext="${signatureDepa}" >a</div>
                     </div>
                     <div class="six wide column">
                         <h2>今すぐ賛同</h2>

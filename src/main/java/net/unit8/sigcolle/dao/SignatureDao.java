@@ -17,6 +17,12 @@ public interface SignatureDao {
     int countByCampaignId(Long campaignId);
 
     @Select
+    List<String> selectAllName();
+
+    @Select
+    List<String> selectAllDepa();
+
+    @Select
     List<Signature> selectAllByCampaignId(Long campaignId);
 
     @Insert
