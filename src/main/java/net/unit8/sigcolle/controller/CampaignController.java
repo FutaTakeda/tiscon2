@@ -69,6 +69,7 @@ public class CampaignController {
         Signature signature = builder(new Signature())
                 .set(Signature::setCampaignId, form.getCampaignIdLong())
                 .set(Signature::setName, form.getName())
+                .set(Signature::setDepa, form.getDepa())
                 .set(Signature::setSignatureComment, form.getSignatureComment())
                 .build();
         SignatureDao signatureDao = domaProvider.getDao(SignatureDao.class);

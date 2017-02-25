@@ -20,6 +20,10 @@ public class SignatureForm extends FormBase {
     @Length(min = 1, max = 50)
     private String name;
 
+    @NotNull
+    @Length(min = 1, max = 50)
+    private String depa;
+
     @Length(max = 5000)
     private String signatureComment;
 

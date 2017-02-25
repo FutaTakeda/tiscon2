@@ -37,11 +37,19 @@ xmlns:th="http://www.thymeleaf.org">
                               th:action="@{~/campaign/{id}(id=${campaign.campaignId})}"
                               th:classappend="${signature.hasErrors()} ? 'error'">
                             <div class="field" th:classappend="${signature.hasErrors('name')} ? 'error'">
+
                                 <input type="text" name="name" placeholder="氏名"
                                        th:value="${session != null and session.principal != null} ? ${session.principal.userName} : ${signature.name}" />
                                 <ul class="ui pointing red basic label" th:if="${signature.hasErrors('name')}">
                                     <li th:each="message : ${signature.getErrors('name')}" th:text="${message}"></li>
                                 </ul>
+
+                                <input type="text" name="depa" placeholder="部署"
+                                       th:value=" ${signature.depa}" />
+                                <ul class="ui pointing red basic label" th:if="${signature.hasErrors('depa')}">
+                                    <li th:each="message : ${signature.getErrors('depa')}" th:text="${message}"></li>
+                                </ul>
+
                             </div>
                             <div class="field" th:classappend="${signature.hasErrors('signatureComment')} ? 'error'">
                                 <label>コメント(任意)</label>

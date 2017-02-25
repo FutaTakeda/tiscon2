@@ -19,6 +19,7 @@ public class Signature implements Serializable {
     private Long signatureId;
 
     private String name;
+    private String depa;
     private String signatureComment;
 
     private Long campaignId;
