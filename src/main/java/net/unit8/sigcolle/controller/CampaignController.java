@@ -20,6 +20,9 @@ import org.pegdown.PegDownProcessor;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static enkan.util.BeanBuilder.builder;
 import static enkan.util.HttpResponseUtils.RedirectStatusCode.SEE_OTHER;
 import static enkan.util.HttpResponseUtils.redirect;
@@ -126,7 +129,14 @@ public class CampaignController {
      * @param session ログインしているユーザsession
      */
     public HttpResponse listCampaigns(Session session) {
-        throw new UnsupportedOperationException("実装してください !!");
+        CampaignDao campaignDao = domaProvider.getDao(CampaignDao.class);
+
+        List<Campaign> campaignAllList=campaignDao.selectAll(); //全キャンペーンのリスト
+        List<Campaign> campaignUserList = new ArrayList<Campaign>();
+
+        LoginUserPrincipal principal = (LoginUserPrincipal) session.get("principal");
+
+        return templateEngine.render( "index" ,  "campaigns", campaignDao.selectByUserId(principal.getUserId()));
     }
 
     private HttpResponse showCampaign(Long campaignId,
